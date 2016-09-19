@@ -8,7 +8,7 @@
 #include "math.h" 
 #include "locale.h" 
 #include "string.h" 
-#define cube x*x
+#define cube2 x*x
 
 
 int main()
@@ -18,7 +18,7 @@ int main()
 	for (i = 0; i < 5; i++)
 	{
 		++x;
-		r = cube;
+		r = cube2;
 		printf("For x=%i => x^2=%i\n", x, r);
 	}
 	printf("Press ENTER to continue...\n");
