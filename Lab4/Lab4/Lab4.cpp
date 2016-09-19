@@ -24,7 +24,6 @@ int main()
 	printf("Сейчас S равен %i\n", s);
 	printf("Нажмите ENTER чтобы продолжить . . .\n");
 	getchar();
-	//123
 	return 0;
 }
 
