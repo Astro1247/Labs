@@ -2,20 +2,27 @@
 //
 
 #include "stdafx.h"
-
-
-int main()
+#include "stdlib.h"
+#include "stdio.h"																	 
+#include "conio.h"																	 
+#include "math.h"																	 
+#include "locale.h"																	 
+#include "string.h"																	 
+																					 
+																					 
+int main()																			 
 {
-	int s = 0;
-	do
+	setlocale(LC_ALL, "RUS");
+	int s = 0;																		 
+	do																				 
 	{
-		printf("S<50, increasing S by 1... (S=%i)\n", s);
+		printf("S меньше 50, увеличиваем S на 1... (S=%i)\n", s);
 		s = s + 1;
-		printf("Checking if S<50...\n");
+		printf("Проверка на выполнение условия S<50...\n");
 	} while (s < 50);
-	printf("Stopping loop..\n");
-	printf("Now S = %i\n", s);
-	printf("Press ENTER to continue...\n");
+	printf("Остановка цикла..\n");
+	printf("Сейчас S равен %i\n", s);
+	printf("Нажмите ENTER чтобы продолжить . . .\n");
 	getchar();
 	return 0;
 }
