@@ -11,15 +11,15 @@ int main()
 	scanf("%d", &input1);
 	if (input1 < 0)
 	{
-		printf("\nNegative number.\n");
+		printf("Negative number.\n");
 	}
 	else
 	{
 		printf("Positive nubmer.\n");
 	}
-	printf("Press ENTER to continue...");
+	printf("\nPress ENTER to continue...\n");
 	getchar();
-
+	getchar();
     return 0;
 }
 
