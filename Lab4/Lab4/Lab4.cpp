@@ -13,7 +13,8 @@
 int main()																			 
 {
 	setlocale(LC_ALL, "RUS");
-	int s = 0;																		 
+func1:
+	int inpt = 0, s = 0;																		 
 	do																				 
 	{
 		printf("S меньше 50, увеличиваем S на 1... (S=%i)\n", s);
@@ -22,6 +23,13 @@ int main()
 	} while (s < 50);
 	printf("Остановка цикла..\n");
 	printf("Сейчас S равен %i\n", s);
+	printf("Повторить? (y/n)\n");
+	inpt = getchar();
+	if (inpt == 121)
+	{
+		goto func1;
+	}
+	//printf("got %s", inpt);
 	printf("Нажмите ENTER чтобы продолжить . . .\n");
 	getchar();
 	return 0;
