@@ -1,6 +1,3 @@
-// Lab3.cpp: определяет точку входа для консольного приложения.
-//
-
 #include "stdafx.h"
 #include "stdlib.h"
 #include "math.h"
@@ -96,6 +93,8 @@ int main()
 	{
 		goto func2;
 	}
+	printf("\nДля продолжения нажмите ENTER . . . ");
+	getchar();
 	getchar();
     return 0;
 }
