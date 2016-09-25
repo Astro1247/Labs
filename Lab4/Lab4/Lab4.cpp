@@ -1,21 +1,15 @@
-// Lab4.cpp: определяет точку входа для консольного приложения.
-//
-
-#include "stdafx.h"
-#include "stdlib.h"
-#include "stdio.h"																	 
-#include "conio.h"																	 
+#include "stdafx.h"															 
 #include "math.h"																	 
-#include "locale.h"																	 
-#include "string.h"																	 
-																					 
-																					 
-int main()																			 
+#include "locale.h"																	 															 
+
+
+int main()
 {
 	setlocale(LC_ALL, "RUS");
 func1:
-	int inpt = 0, s = 0;																		 
-	do																				 
+	char yn;
+	int s = 0;
+	do
 	{
 		printf("S меньше 50, увеличиваем S на 1... (S=%i)\n", s);
 		s = s + 1;
@@ -23,13 +17,25 @@ func1:
 	} while (s < 50);
 	printf("Остановка цикла..\n");
 	printf("Сейчас S равен %i\n", s);
+check1:
 	printf("Повторить? (y/n)\n");
-	inpt = getchar();
-	if (inpt == 121)
+	scanf(" %c", &yn);
+	if (yn == 'n' || yn == 'N')
+	{
+		goto func2;
+	}
+	else if (yn == 'Y' || yn == 'y')
 	{
 		goto func1;
+		printf("\n");
 	}
-	//printf("got %s", inpt);
+	else
+	{
+		printf("Некорректный ввод.\n");
+		goto check1;
+	}
+func2:
+
 	printf("Нажмите ENTER чтобы продолжить . . .\n");
 	getchar();
 	return 0;
