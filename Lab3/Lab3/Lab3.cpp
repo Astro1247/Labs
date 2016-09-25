@@ -3,11 +3,8 @@
 
 #include "stdafx.h"
 #include "stdlib.h"
-#include "stdio.h"
-#include "conio.h"
 #include "math.h"
 #include "locale.h"
-#include "string.h"
 
 
 int main()
