@@ -9,10 +9,11 @@
 
 int main()
 {
-	setlocale(LC_ALL, "RUS");
 	int input1, input2, input3;
+	setlocale(LC_ALL, "RUS");
 	func1:
 	printf("¬ведите число дл€ проверки: ");
+	int ui;
 	scanf("%d", &input1);
 	if (input1 < 0)
 	{
