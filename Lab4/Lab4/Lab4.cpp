@@ -8,12 +8,13 @@ int main()
 	setlocale(LC_ALL, "RUS");
 func1:
 	char yn;
-	int s = 0;
+	int s = 0, f = 0;
 	do
 	{
-		printf("S меньше 50, увеличиваем S на 1... (S=%i)\n", s);
-		s = s + 1;
-		printf("Проверка на выполнение условия S<50...\n");
+		f = f + 1;
+		//printf("S меньше 50, увеличиваем S на 1... (S=%i)\n", s);
+		s = s + f;
+		printf("Проверка на выполнение условия S<50...\nS= %i\n", s);
 	} while (s < 50);
 	printf("Остановка цикла..\n");
 	printf("Сейчас S равен %i\n", s);
