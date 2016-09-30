@@ -7,26 +7,33 @@
 #include <time.h>
 
 
-void Swap(int *Mas, int i)
+void Swap(int *Mas, int i, int N2, int K2)
 {
 	int temp;
 	temp = Mas[i];
 	Mas[i] = Mas[i - 1];
 	Mas[i - 1] = temp;
+	printf("\nСостояние массива: ");
+	for (K2 = 0; K2<N2; K2++)
+		printf("%i, ", Mas[K2]);
 }
 
-void ShakerSort(int *Mas, int Start, int N)
+void ShakerSort(int *Mas, int Start, int N, int K)
 {
-	int Left, Right, i;
+	int Left, Right, i, N1 = N, K1 = K;
 	Left = Start;
 	Right = N - 1;
 	while (Left <= Right)
 	{
 		for (i = Right; i >= Left; i--)
-			if (Mas[i - 1]>Mas[i]) Swap(Mas, i);
+		{
+			if (Mas[i - 1] > Mas[i]) Swap(Mas, i, N1, K1);
+		}
 		Left++;
 		for (i = Left; i <= Right; i++)
-			if (Mas[i - 1]>Mas[i]) Swap(Mas, i);
+		{
+			if (Mas[i - 1] > Mas[i]) Swap(Mas, i, N1, K1);
+		}
 		Right--;
 	}
 }
@@ -48,8 +55,8 @@ void main()
 		A[k] = rand() % (500 + 1 - 0) + 0;
 		printf("%i элемент: %i\n", temp1, A[k]);
 	}
-	ShakerSort(A, 1, n);
-	printf("Результирующий массив: ");
+	ShakerSort(A, 1, n, k);
+	printf("\nРезультирующий массив: ");
 	for (k = 0; k<n; k++) 
 		printf("%i, ", A[k]);
 	clock_t end = clock();
