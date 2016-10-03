@@ -6,7 +6,7 @@
 int main()
 {
 	setlocale(LC_ALL, "RUS");
-	int s, f, input[4], i, temp;
+	int s, f, input[5], i, temp, a = 1;
 	char yn;
 	do
 	{
@@ -29,13 +29,14 @@ int main()
 	{
 		for (i = 0; i < 5; i++)
 		{
-			printf("Введите число %i: ", i);
-
+			printf("Введите число %i: ", i+1);
 			scanf("%d", &input[i]);
+			a = a * input[i];
 		}
+		printf("Результат умножения полученных чисел: %i\n", a);
 		printf("Повторить? (Y/N)");
 		scanf(" %c", &yn);
 	} while (yn == 'y' && yn != 'n');
-	return 0;
+	return 2;
 }
 
