@@ -27,12 +27,14 @@ int main()
 	getchar();
 	do
 	{
-		for (i = 0; i < 5; i++)
+		i = 0;
+		do
 		{
 			printf("Введите число %i: ", i+1);
 			scanf("%d", &input[i]);
 			a = a * input[i];
-		}
+			i = i + 1;
+		} while (i < 5);
 		printf("Результат умножения полученных чисел: %i\n", a);
 		printf("Повторить? (Y/N)");
 		scanf(" %c", &yn);
