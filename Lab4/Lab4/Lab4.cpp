@@ -41,6 +41,6 @@ int main()
 		printf("Повторить? (Y/N)");
 		scanf(" %c", &yn);
 	} while (yn == 'y' && yn != 'n');
-	return 2;
+	return 0;
 }
 
