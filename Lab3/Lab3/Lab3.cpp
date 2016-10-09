@@ -29,6 +29,7 @@ int main()
 		scanf(" %c", &yn);
 	} while (yn == 'y' && yn != 'n');
 	getchar();
+	system("cls");
 	do
 	{
 		printf("¬ведите число дл€ замены на еквивалентный символ: ");
