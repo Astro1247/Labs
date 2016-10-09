@@ -5,8 +5,8 @@
 
 int main()
 {
+	int s, f, input[5], i, temp;
 	setlocale(LC_ALL, "RUS");
-	int s, f, input[4], i, temp;
 	char yn;
 	do
 	{
