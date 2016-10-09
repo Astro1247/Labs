@@ -1,13 +1,14 @@
-#include "stdafx.h"															 
+#include "stdafx.h"		
+#include "stdlib.h"
 #include "math.h"																	 
 #include "locale.h"																	 															 
 
 
 int main()
 {
-	setlocale(LC_ALL, "RUS");
 	int s, f, input[5], i, temp, a = 1;
 	char yn;
+	setlocale(LC_ALL, "RUS");
 	do
 	{
 		s = 0;
@@ -25,6 +26,7 @@ int main()
 	}  while (yn == 'y' && yn != 'n');
 	printf("Нажмите ENTER чтобы продолжить . . .\n");
 	getchar();
+	system("cls");
 	do
 	{
 		i = 0;
