@@ -7,35 +7,35 @@
 int main()
 {
 	int input1, input2, input3;
+	char yn;
 	setlocale(LC_ALL, "RUS");
-	func1:
-	printf("Введите число для проверки: ");
-	scanf("%d", &input1);
-	if (input1 < 0)
+	do
 	{
-		printf("Это было отрицательное число.\n");
-	}
-	else if (input1 > 0)
-	{
-		printf("Это было положительное число.\n");
-	}
-	else
-	{
-		printf("Это был ноль.\n");
-	}
-	printf("Повторить проверку? (0 - нет/1 - да)");
-	scanf("%d", &input3);
-	if (input3 == 1)
-	{
-		goto func1;
-	}
+		printf("Введите число для проверки: ");
+		scanf("%d", &input1);
+		if (input1 < 0)
+		{
+			printf("Это было отрицательное число.\n");
+		}
+		else if (input1 > 0)
+		{
+			printf("Это было положительное число.\n");
+		}
+		else
+		{
+			printf("Это был ноль.\n");
+		}
+		printf("\nПовторить? (Y/N)");
+		scanf(" %c", &yn);
+	} while (yn == 'y' && yn != 'n');
 	getchar();
-	func2:
-	printf("Введите число для замены на еквивалентный символ: ");
-	scanf("%d", &input2);
-	printf("Еквивалентный символ: ");
-	switch (input2)
+	do
 	{
+		printf("Введите число для замены на еквивалентный символ: ");
+		scanf("%d", &input2);
+		printf("Еквивалентный символ: ");
+		switch (input2)
+		{
 		case 1:
 		{
 			printf("!");
@@ -86,13 +86,10 @@ int main()
 			printf(")");
 			break;
 		}
-	}
-	printf("\nПовторить проверку? (0 - нет/1 - да)");
-	scanf("%d", &input3);
-	if (input3 == 1)
-	{
-		goto func2;
-	}
+		}
+		printf("\nПовторить? (Y/N)");
+		scanf(" %c", &yn);
+	} while (yn == 'y' && yn != 'n');
 	printf("\nДля продолжения нажмите ENTER . . . ");
 	getchar();
 	getchar();
