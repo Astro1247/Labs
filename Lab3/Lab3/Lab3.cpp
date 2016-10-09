@@ -25,7 +25,7 @@ int main()
 		{
 			printf("Это был ноль.\n");
 		}
-		printf("\nПовторить? (Y/N)");
+		printf("Повторить? (Y/N)");
 		scanf(" %c", &yn);
 	} while (yn == 'y' && yn != 'n');
 	getchar();
