@@ -6,18 +6,21 @@
 
 int main()
 {
-	int s, f, input[5], i, temp, a = 1;
+	int s, f, input[5], i, temp, a = 1, numb;
 	char yn;
 	setlocale(LC_ALL, "RUS");
 	do
 	{
+		printf("Установите лимит числа S: ");
+		scanf("%i", &numb);
+		getchar();
 		s = 0;
 		f = 0;
-		while (s < 50)
+		while (s < numb)
 		{
 			f = f + 1;
 			s = s + f;
-			printf("Проверка на выполнение условия S<50...\nS= %i\n", s);
+			printf("Проверка на выполнение условия S<%i...\nS= %i\n", numb, s);
 		}
 		printf("Остановка цикла..\n");
 		printf("Сейчас S равен %i\n", s);
