@@ -5,8 +5,8 @@
 
 int main()
 {
-	int a, t, j1, j2, min = 100, mint, inpt, numb;
-	double fx, x = 1.1, arr[501], arr2d[7][4];
+	int a, t, j1, j2, min = 100, mint, inpt, numb, columns, rows, maxrand, minrand;
+	double fx, x = 1.1, arr2d[7][4];
 	char yn;
 	setlocale(LC_ALL, "RUS");
 	do
@@ -27,6 +27,7 @@ int main()
 				printf("Сколько элементов вывести Вам вывести на экран? a=");
 				scanf("%i", &numb);
 				getchar();
+				int *arr = new int[numb];
 				for (int i = 1; i <= numb; i++)
 				{
 					t = i - 1;
@@ -46,34 +47,47 @@ int main()
 			system("cls");
 			do
 			{
+				rows = columns = maxrand = minrand = 0;
+				printf("Задайте количество строк для двумерного массива: ");
+				scanf("%i", &rows);
+				getchar();
+				printf("Задайте количество столбцов для двумерного массива: ");
+				scanf("%i", &columns);
+				getchar();
+				printf("Введите минимальное число генерируемых случайных чисел: ");
+				scanf("%i", &minrand);
+				getchar();
+				printf("Введите максимальное число генерируемых случайных чисел: ");
+				scanf("%i", &maxrand);
+				getchar();
 				printf("Вот массив:\n");
-				for (j1 = 0; j1 < 6; j1++)
+				for (j1 = 0; j1 < rows; j1++)
 				{
-					for (j2 = 0; j2 < 3; j2++)
+					for (j2 = 0; j2 < columns; j2++)
 					{
-						arr2d[j1][j2] = rand() % (100 + 1 - 1) + 1;
+						arr2d[j1][j2] = rand() % (maxrand + 1 - minrand) + minrand;
 						//printf("Елемент %i|%i : %.0f\n", j1, j2, arr2d[j1][j2]);
 					}
 				}
 				printf(" \t");
-				for (int i = 0; i < 3; i++)
+				for (int i = 0; i < columns; i++)
 				{
 					printf("%i \t", i); //ПОдписываем колонки
 				}
 				printf("\n");
-				for (j1 = 0; j1 < 6; j1++)
+				for (j1 = 0; j1 < rows; j1++)
 				{
 					printf("%i \t", j1);
-					for (j2 = 0; j2 < 3; j2++)
+					for (j2 = 0; j2 < columns; j2++)
 					{
 						printf("%.0f \t", arr2d[j1][j2]);
 					}
 					printf("\n");
 				}
 				min = 100;
-				for (j1 = 0; j1 < 6; j1++)
+				for (j1 = 0; j1 < rows; j1++)
 				{
-					for (j2 = 0; j2 < 3; j2++)
+					for (j2 = 0; j2 < columns; j2++)
 					{
 						mint = arr2d[j1][j2];
 						if (mint < min) min = mint;
