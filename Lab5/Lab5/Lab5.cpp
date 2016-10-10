@@ -5,14 +5,14 @@
 
 int main()
 {
-	int a, t, j1, j2, min = 100, mint, inpt;
+	int a, t, j1, j2, min = 100, mint, inpt, numb;
 	double fx, x = 1.1, arr[501], arr2d[7][4];
 	char yn;
 	setlocale(LC_ALL, "RUS");
 	do
 	{
 		system("cls");
-		printf("Меню программы\n1. Программа вычисления функции\n2. Программа заполнения двумерного случайными элементами 1-100 и нахождение минимального значения\nЗапустить программу №");
+		printf("Меню программы\n1. Программа вычисления функции f(x)=a*cos(x/50)\n2. Программа заполнения двумерного случайными элементами 1-100 и нахождение минимального значения\nЗапустить программу №");
 		scanf("%i", &inpt);
 		getchar();
 		switch (inpt)
@@ -22,7 +22,13 @@ int main()
 			system("cls");
 			do
 			{
-				for (int i = 1; i <= 500; i++)
+				printf("Введите x=");
+				scanf("%i", &x);
+				getchar();
+				printf("Сколько элементов вывести? a=");
+				scanf("%i", &numb);
+				getchar();
+				for (int i = 1; i <= numb; i++)
 				{
 					t = i - 1;
 					a = i;
@@ -86,6 +92,7 @@ int main()
 		scanf("%c", &yn);
 		getchar();
 	} while (yn == 'y' && yn != 'n');
+	//system("pause");
 	printf("Нажмите ENTER для продолжения . . . ");
 	getchar();
     return 0;
