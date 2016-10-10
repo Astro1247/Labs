@@ -66,7 +66,6 @@ int main()
 					for (j2 = 0; j2 < columns; j2++)
 					{
 						arr2d[j1][j2] = rand() % (maxrand + 1 - minrand) + minrand;
-						//printf("Елемент %i|%i : %.0f\n", j1, j2, arr2d[j1][j2]);
 					}
 				}
 				printf(" \t");
