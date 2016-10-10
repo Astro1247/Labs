@@ -71,7 +71,7 @@ int main()
 				printf(" \t");
 				for (int i = 0; i < columns; i++)
 				{
-					printf("%i \t", i); //ПОдписываем колонки
+					printf("%i \t", i);
 				}
 				printf("\n");
 				for (j1 = 0; j1 < rows; j1++)
