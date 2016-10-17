@@ -6,7 +6,7 @@
 
 int main()
 {
-	int s, f, input[5], i, temp, a = 1, numb;
+	int s, f, input[5], i, temp, a = 1, numb, ik;
 	char yn;
 	setlocale(LC_ALL, "RUS");
 	do
@@ -33,13 +33,16 @@ int main()
 	do
 	{
 		i = 0;
+		printf("Сколько чисел Вы хотите перемножить? i=");
+		scanf(" %i", &ik);
+		getchar();
 		do
 		{
 			printf("Введите число %i: ", i+1);
 			scanf("%d", &input[i]);
 			a = a * input[i];
-			i = i + 1;
-		} while (i < 5);
+			i += 1;
+		} while (i < ik);
 		printf("Результат умножения полученных чисел: %i\n", a);
 		printf("Повторить? (Y/N)");
 		scanf(" %c", &yn);
