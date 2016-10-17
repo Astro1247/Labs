@@ -30,7 +30,7 @@ int main()
 				int *arr = new int[numb];
 				for (int i = 1; i <= numb; i++)
 				{
-					t = i - 1;
+			
 					a = i;
 					fx = a * (cos(x / 50));
 					arr[i] = fx;
