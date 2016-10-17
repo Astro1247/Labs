@@ -105,7 +105,6 @@ int main()
 		scanf("%c", &yn);
 		getchar();
 	} while (yn == 'y' && yn != 'n');
-	//system("pause");
 	printf("Пожалуйста, нажмине кнопку ENTER на вашей клавиатуре для продолжения . . . ");
 	getchar();
     return 0;
