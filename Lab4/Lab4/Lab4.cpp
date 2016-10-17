@@ -6,7 +6,7 @@
 
 int main()
 {
-	int s, f, input[5], i, temp, a = 1, numb, ik;
+	int s, f, i, temp, a = 1, numb, ik;
 	char yn;
 	setlocale(LC_ALL, "RUS");
 	do
@@ -32,10 +32,13 @@ int main()
 	system("cls");
 	do
 	{
+		ik = 0;
 		i = 0;
+		a = 1;
 		printf("Сколько чисел Вы хотите перемножить? i=");
 		scanf(" %i", &ik);
 		getchar();
+		int *input = new int[ik];
 		do
 		{
 			printf("Введите число %i: ", i+1);
