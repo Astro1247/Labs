@@ -83,7 +83,7 @@ int main()
 					}
 					printf("\n");
 				}
-				min = 100;
+				min = maxrand;
 				for (j1 = 0; j1 < rows; j1++)
 				{
 					for (j2 = 0; j2 < columns; j2++)
