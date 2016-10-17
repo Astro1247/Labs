@@ -5,7 +5,7 @@
 
 int main()
 {
-	int a, t, j1, j2, min = 100, mint, inpt, numb, columns, rows, maxrand, minrand;
+	int a, t, j1, j2, min, mint, inpt, numb, columns, rows, maxrand, minrand;
 	double fx, x = 1.1, arr2d[7][4];
 	char yn;
 	setlocale(LC_ALL, "RUS");
