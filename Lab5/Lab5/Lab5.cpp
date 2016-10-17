@@ -5,7 +5,7 @@
 
 int main()
 {
-	int a, t, j1, j2, min = 100, mint, inpt, numb, columns, rows, maxrand, minrand;
+	int a, t, j1, j2, min, mint, inpt, numb, columns, rows, maxrand, minrand;
 	double fx, x = 1.1, arr2d[7][4];
 	char yn;
 	setlocale(LC_ALL, "RUS");
@@ -83,7 +83,7 @@ int main()
 					}
 					printf("\n");
 				}
-				min = 100;
+				min = maxrand;
 				for (j1 = 0; j1 < rows; j1++)
 				{
 					for (j2 = 0; j2 < columns; j2++)
@@ -105,7 +105,6 @@ int main()
 		scanf("%c", &yn);
 		getchar();
 	} while (yn == 'y' && yn != 'n');
-	//system("pause");
 	printf("Пожалуйста, нажмине кнопку ENTER на вашей клавиатуре для продолжения . . . ");
 	getchar();
     return 0;
