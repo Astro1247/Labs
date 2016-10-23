@@ -43,7 +43,7 @@ int main() {
 	gets(str_3);
 
 	if (strcmp(str_2, str_3) == 0)
-		printf("Ğÿäîê %s äîğ³âíşº ğÿäêó %s", str_2, str_3);
+		printf("Ğÿäîê %s äîğ³âíşº ğÿäêó %s\n", str_2, str_3);
 	else
 		if (str_2>str_3)
 			printf("Ğÿäîê %s > %s\n", str_2, str_3);
