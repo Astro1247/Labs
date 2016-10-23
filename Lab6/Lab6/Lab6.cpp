@@ -30,7 +30,7 @@ int main() {
 	s[j] = '\0';
 
 	printf("строка :%s", s);//вывод результата
-	system("pause");
+	system("/npause");
 
 
 
