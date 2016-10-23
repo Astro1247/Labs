@@ -20,6 +20,7 @@ int main()
 		{
 			do
 			{
+				int *arr;
 				system("cls");
 				printf("Пожалуйста, предоствавьте значение x=");
 				scanf("%i", &x);
@@ -27,7 +28,7 @@ int main()
 				printf("Сколько элементов вывести Вам вывести на экран? a=");
 				scanf("%i", &numb);
 				getchar();
-				int *arr = new int[numb];
+				arr = (int*)malloc(numb * sizeof(int));
 				for (int i = 1; i <= numb; i++)
 				{
 					t = i - 1;
