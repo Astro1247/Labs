@@ -7,7 +7,7 @@
 int main() {
 	int i, j, menuPoint;
 	char str_1[100], str_2[100], str_3[100];  //исходная строка 
-	char symbol, YN; //удаляемый символ
+	char symbol, yn; //удаляемый символ
 	setlocale(LC_ALL, "RUS");
 	printf("Выберите алгоритм:\n1. Удаление требуемого символа из введенной строки\n2. Сравнение двух строк\nВаш выбор: ");
 	scanf("%d", &menuPoint);
@@ -37,9 +37,9 @@ int main() {
 			str_1[j] = '\0';              //Запись нулевого байта в конец модифицированной строки
 			printf("Строка: %s\n", str_1);//Вывод результата
 			printf("Повторить выполнение функции? (Y/N)");
-			scanf("%c", &YN);
+			scanf("%c", &yn);
 			getchar();
-		} while (YN == 'y' || YN == 'Y');
+		} while (yn == 'y' || yn == 'Y');
 	}
 	case 2:
 	{
@@ -56,9 +56,9 @@ int main() {
 			else
 				printf("Строки одинаковые");
 			printf("Повторить выполнение функции? (Y/N)");
-			scanf("%c", &YN);
+			scanf("%c", &yn);
 			getchar();
-		} while (YN == 'y' || YN == 'Y');
+		} while (yn == 'y' || yn == 'Y');
 	}
 	}
 	system("pause");
