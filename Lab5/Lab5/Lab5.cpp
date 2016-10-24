@@ -25,7 +25,7 @@ int main()
 				printf("Пожалуйста, предоствавьте значение x=");
 				scanf("%i", &x);
 				getchar();
-				printf("Сколько элементов вывести Вам вывести на экран? a=");
+				printf("Сколько элементов вывести Вам вывести на экран?");
 				scanf("%i", &numb);
 				getchar();
 				arr = (int*)malloc(numb * sizeof(int));
@@ -35,7 +35,7 @@ int main()
 					a = i;
 					fx = a * (cos(x / 50));
 					arr[i] = fx;
-					printf("%i елемент: %.40f\n", a, fx);
+					printf("%i елемент: %.6f\n", a, fx);
 				}
 				printf("Желаете ли Вы повторить выполнение данной функции еще раз? (Y/N)");
 				scanf("%c", &yn);
