@@ -9,12 +9,14 @@ int main() {
 	char str_1[100], str_2[100], str_3[100];  //исходная строка 
 	char symbol, YN; //удаляемый символ
 	setlocale(LC_ALL, "RUS");
-	printf("Выберите алгоритм:\n1. Удаление требуемого символа из введенной строки\n2. Сравнение двух строк");
+	printf("Выберите алгоритм:\n1. Удаление требуемого символа из введенной строки\n2. Сравнение двух строк\nВаш выбор: ");
 	scanf("%d", &menuPoint);
+	getchar();
 	switch (menuPoint)
 	{
 	case 1:
 	{
+		system("cls");
 		do {
 			printf("Введите строку: ");
 			gets(str_1);	// Ввод строки
@@ -41,14 +43,15 @@ int main() {
 	}
 	case 2:
 	{
+		system("cls");
 		do
 		{
 			printf("Введите строки для сравнения:\n");
 			printf("\n1: ");
-			gets(str_2);
+			gets(str_2);										  //Получение строки 1
 			printf("\n2: ");
-			gets(str_3);
-			if (strcmp(str_2, str_3))
+			gets(str_3);										  //Получение строки 2
+			if (strcmp(str_2, str_3))							  //Сравнение строк
 				printf("Строки разные");
 			else
 				printf("Строки одинаковые");
