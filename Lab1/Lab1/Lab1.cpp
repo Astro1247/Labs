@@ -1,7 +1,9 @@
 #include "stdafx.h"
 #include "locale.h"
-#include <stdlib.h>
-#include <time.h>
+#include "stdlib.h"
+#include "time.h"
+#include "conio.h"
+#include "windows.h"
 
 
 int Swap(int *Mas, int i, int N2, int K2)
@@ -15,7 +17,7 @@ int Swap(int *Mas, int i, int N2, int K2)
 		printf("%i, ", Mas[K2]);
 }
 
-int ShakerSort(int *Mas, int Start, int N, int K)
+int Shake(int *Mas, int Start, int N, int K)
 {
 	int Left, Right, i, N1 = N, K1 = K;
 	Left = Start;
@@ -35,14 +37,15 @@ int ShakerSort(int *Mas, int Start, int N, int K)
 	}
 }
 
-int main()
+int ShakerSort()
 {
-	int n = 10, k, temp1, A[10];
-	setlocale(LC_ALL, "RUS");
-	/*printf("Размер массива: ");
-	scanf("%d", &n);*/
+	int n, k, temp1;
+	printf("\nРазмер массива: ");
+	scanf("%d", &n);
+	getchar();
 	clock_t begin = clock();
 	//int *A = new int[n];
+	int *A = (int*)malloc(n * sizeof(int));
 	
 	for (k = 0; k<n; k++)
 	{
@@ -53,15 +56,80 @@ int main()
 		A[k] = rand() % (500 + 1 - 0) + 0;
 		printf("%i элемент: %i\n", temp1, A[k]);
 	}
-	ShakerSort(A, 1, n, k);
+	Shake(A, 1, n, k);
 	printf("\nРезультирующий массив: ");
 	for (k = 0; k<n; k++) 
 		printf("%i, ", A[k]);
 	clock_t end = clock();
 	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 	printf("\nПотраченное время: %f секунд\n", time_spent);
-	printf("Нажмите ENTER для продолжения  . . . ");
-	getchar();
-	return 0;
 }
 
+void CountSort()
+{
+	int numb;
+	printf("Введите количество элементов в массиве: ");
+
+}
+
+void Switcher()
+{
+	int func = 0, err = 0;
+	while (func == 0)
+	{
+		if (err == 1)
+		{
+			system("cls");
+			printf("Некорректный ввод\n\n");
+			err = 0;
+		}
+		else
+			system("cls");
+		for (int i = 1; i < 5; i++)
+		{
+			printf("Загрузка... %i%%\n", i*25);
+			Beep(i * 100, 150);
+		}
+		system("cls");
+		printf("Загрузка завершена.\n");
+		printf("Выберите сортировку:\n1.Шейкерная сортировка\n-2.Сорировка слиянием    // в разработке\n3.Сортировка подсчетом\nВведите номер выбранной сортировки: ");
+		func = _getch();
+		switch (func)
+		{
+		case 49:
+		{
+			ShakerSort();
+			break;
+		}
+		case 50:
+		{
+			printf("Функция в разработке...");
+			break;
+		}
+		case 51:
+		{
+			CountSort();
+			printf("Функция в разработке...");
+			break;
+		}
+		default:
+		{
+			err = 1;
+			func = 0;
+			break;
+		}
+		}
+	}
+}
+
+int main()
+{
+	char yn;
+	setlocale(LC_ALL, "RUS");
+	do
+	{
+		Switcher();
+		printf("Вернуться в меню программы? (Y/N) ");
+		yn = _getch();
+	} while (yn == 'y' || yn == 'Y');
+}
