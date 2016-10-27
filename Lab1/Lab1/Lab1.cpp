@@ -3,7 +3,6 @@
 #include "stdlib.h"
 #include "time.h"
 #include "conio.h"
-#include "windows.h"
 
 
 int Swap(int *Mas, int i, int N2, int K2)
@@ -40,6 +39,7 @@ int Shake(int *Mas, int Start, int N, int K)
 int ShakerSort()
 {
 	int n, k, temp1;
+	srand(time(0));
 	printf("\nĞàçìåğ ìàññèâà: ");
 	scanf("%d", &n);
 	getchar();
@@ -63,13 +63,77 @@ int ShakerSort()
 	clock_t end = clock();
 	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 	printf("\nÏîòğà÷åííîå âğåìÿ: %f ñåêóíä\n", time_spent);
+	free(A);
 }
 
 void CountSort()
 {
-	int numb;
-	printf("Ââåäèòå êîëè÷åñòâî ıëåìåíòîâ â ìàññèâå: ");
-
+	int numb, err = 0, MaxInput;
+	system("cls");
+	srand(time(0));
+	char yn;
+	do
+	{
+		printf("Ââåäèòå êîëè÷åñòâî ıëåìåíòîâ â ìàññèâå: ");
+		scanf("%d", &numb);
+		getchar();
+		if (numb > 10 || numb < 0)
+		{
+			err = 1;
+			printf("Ââåäåííîå ÷èñëî ïğåâûøàåò äîïóñòèìûé ëèìèò, ïîâòîğèòå ââîä.\n");
+		}
+		else
+		{
+			err = 0;
+		}
+	} while (err == 1);
+	//clock_t begin = clock();
+	int *A = (int*)malloc(numb * sizeof(int));
+	printf("Çàïîëíèòü ìàññèâ ñëó÷àéíûìè ÷èñëàìè? (Y/N)\n");
+	yn = _getch();
+	if (yn == 'y' || yn == 'Y')
+	{
+		for (int i = 0; i < numb; i++)
+		{
+			A[i] = rand() % (500 + 1 - 0) + 0;
+			printf("%i ıëåìåíò: %i\n", i+1, A[i]);
+		}
+	}
+	else if (yn == 'n' || yn == 'N')
+	{
+		for (int i = 0; i < numb; i++)
+		{
+			printf("Ââåäèòå %i ıëåìåíò: ", i+1);
+			A[i] = scanf("%d");
+		}
+		for (int i = 0; i < numb; i++)
+		{
+			printf("%i ıëåìåíò: %i\n", i + 1, A[i]);
+		}
+	}
+	MaxInput = A[0];
+	for (int i = 0; i < numb; i++)
+	{
+		if (MaxInput < A[i])
+			MaxInput = A[i];
+	}
+	int *B = (int*)malloc(MaxInput * sizeof(int));
+	for (int i = 0; i < numb; i++)
+	{
+		B[A[i]]++;
+	}
+	for (int i = 0; i < MaxInput; i++)
+	{
+		printf("%d\n", B[i]);
+		for (int j = 0; j < B[i]; j++)
+		{
+			printf("%i, ", i);
+		}
+	}
+	//clock_t end = clock();
+	//double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+	//printf("\nÏîòğà÷åííîå âğåìÿ: %f ñåêóíä\n", time_spent);
+	free(A);
 }
 
 void Switcher()
@@ -85,11 +149,6 @@ void Switcher()
 		}
 		else
 			system("cls");
-		for (int i = 1; i < 5; i++)
-		{
-			printf("Çàãğóçêà... %i%%\n", i*25);
-			Beep(i * 100, 150);
-		}
 		system("cls");
 		printf("Çàãğóçêà çàâåğøåíà.\n");
 		printf("Âûáåğèòå ñîğòèğîâêó:\n1.Øåéêåğíàÿ ñîğòèğîâêà\n-2.Ñîğèğîâêà ñëèÿíèåì    // â ğàçğàáîòêå\n3.Ñîğòèğîâêà ïîäñ÷åòîì\nÂâåäèòå íîìåğ âûáğàííîé ñîğòèğîâêè: ");
@@ -109,7 +168,6 @@ void Switcher()
 		case 51:
 		{
 			CountSort();
-			printf("Ôóíêöèÿ â ğàçğàáîòêå...");
 			break;
 		}
 		default:
