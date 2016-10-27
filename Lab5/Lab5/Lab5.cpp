@@ -11,7 +11,7 @@ int main()
 	setlocale(LC_ALL, "RUS");
 	do
 	{
-		printf("Меню программы представленно ниже, пожалуйста. сделайте Ваш выбор\n1. Программа вычисления функции f(x)=a*cos(x/50)\n2. Программа заполнения двумерного случайными элементами 1-100 и нахождение минимального значения\nПрограмму под каким пунктом Вы желаете выполнить?\nЗапустить программу под пунктом: ");
+		printf("Меню программы представленно ниже, пожалуйста. сделайте Ваш выбор\n1. Программа вычисления функции f(x)=a*cos(x/50)\n2. Программа заполнения двумерного случайными элементами и нахождение минимального значения\nПрограмму под каким пунктом Вы желаете выполнить?\nЗапустить программу под пунктом: ");
 		scanf("%i", &inpt);
 		getchar();
 		switch (inpt)
@@ -21,32 +21,40 @@ int main()
 			do
 			{
 				system("cls");
-				printf("Пожалуйста, предоствавьте значение x=");
-				scanf("%i", &x);
+				printf("Пожалуйста, предоствавьте значение a=");
+				scanf("%i", &a);
 				getchar();
-				printf("Сколько элементов вывести Вам вывести на экран? a=");
+				printf("Сколько элементов вывести Вам вывести на экран?");
 				scanf("%i", &numb);
 				getchar();
-				int *arr = new int[numb];
-				for (int i = 1; i <= numb; i++)
+				if (a < 1 || a > 100 || numb < 1 || numb > 100)
 				{
-					t = i - 1;
-					a = i;
-					fx = a * (cos(x / 50));
-					arr[i] = fx;
-					printf("%i елемент: %.40f\n", a, fx);
+					printf("Одно илибольше из полученных значений не прошло проверку на соответствие допустимым лимитам, повторить ввод? (Y/N) ");
+					scanf("%c", &yn);
+					getchar();
 				}
-				printf("Желаете ли Вы повторить выполнение данной функции еще раз? (Y/N)");
-				scanf("%c", &yn);
-				getchar();
+				else
+				{
+					int *arr = (int*)malloc(numb * sizeof(int));
+					for (x = 1; x <= 100; x++)
+					{
+						t = x - 1;
+						fx = a * (cos(x / 50));
+						arr[t] = fx;
+						printf("%i елемент: %.6f\n", a, fx);
+					}
+					printf("Желаете ли Вы повторить выполнение данной функции еще раз? (Y/N)");
+					scanf("%c", &yn);
+					getchar();
+				}
 			} while (yn == 'y' && yn != 'n');
 			break;
 		}
 		case 2:
 		{
-			system("cls");
 			do
 			{
+				system("cls");
 				rows = columns = maxrand = minrand = 0;
 				printf("Задайте количество строк для двумерного массива: ");
 				scanf("%i", &rows);
@@ -60,42 +68,52 @@ int main()
 				printf("Введите максимальное число генерируемых случайных чисел: ");
 				scanf("%i", &maxrand);
 				getchar();
-				printf("Вот массив:\n");
-				for (j1 = 0; j1 < rows; j1++)
+				printf("Проверка соответствия введенных значений допустимым пределам значений...\n");
+				if (rows < 1 || rows > 30 || columns < 1 || columns > 30 || minrand < 0 || minrand > 5000 || maxrand < 0 || maxrand > 5000 || minrand > maxrand)
 				{
-					for (j2 = 0; j2 < columns; j2++)
+					printf("Одно илибольше из полученных значений не прошло проверку на соответствие допустимым лимитам, повторить ввод? (Y/N) ");
+					scanf("%c", &yn);
+					getchar();
+				}
+				else
+				{
+					printf("Вот массив:\n");
+					for (j1 = 0; j1 < rows; j1++)
 					{
-						arr2d[j1][j2] = rand() % (maxrand + 1 - minrand) + minrand;
+						for (j2 = 0; j2 < columns; j2++)
+						{
+							arr2d[j1][j2] = rand() % (maxrand + 1 - minrand) + minrand;
+						}
 					}
-				}
-				printf(" \t");
-				for (int i = 0; i < columns; i++)
-				{
-					printf("%i \t", i);
-				}
-				printf("\n");
-				for (j1 = 0; j1 < rows; j1++)
-				{
-					printf("%i \t", j1);
-					for (j2 = 0; j2 < columns; j2++)
+					printf(" \t");
+					for (int i = 0; i < columns; i++)
 					{
-						printf("%.0f \t", arr2d[j1][j2]);
+						printf("%i \t", i);
 					}
 					printf("\n");
-				}
-				min = maxrand;
-				for (j1 = 0; j1 < rows; j1++)
-				{
-					for (j2 = 0; j2 < columns; j2++)
+					for (j1 = 0; j1 < rows; j1++)
 					{
-						mint = arr2d[j1][j2];
-						if (mint < min) min = mint;
+						printf("%i \t", j1);
+						for (j2 = 0; j2 < columns; j2++)
+						{
+							printf("%.0f \t", arr2d[j1][j2]);
+						}
+						printf("\n");
 					}
+					min = maxrand;
+					for (j1 = 0; j1 < rows; j1++)
+					{
+						for (j2 = 0; j2 < columns; j2++)
+						{
+							mint = arr2d[j1][j2];
+							if (mint < min) min = mint;
+						}
+					}
+					printf("Вот Ваше минимальное число из массива: %i\n", min);
+					printf("Желаете ли Вы повторить выполнение данной функции еще раз? (Y/N)");
+					scanf("%c", &yn);
+					getchar();
 				}
-				printf("Вот Ваше минимальное число из массива: %i\n", min);
-				printf("Желаете ли Вы повторить выполнение данной функции еще раз? (Y/N)");
-				scanf("%c", &yn);
-				getchar();
 			} while (yn == 'y' && yn != 'n');
 			break;
 		}
