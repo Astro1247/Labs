@@ -104,7 +104,10 @@ void CountSort()
 		for (int i = 0; i < numb; i++)
 		{
 			printf("Введите %i элемент: ", i+1);
-			A[i] = scanf("%d");
+			int Input;
+			scanf("%i", &A[i]);
+			printf("%i\n", A[i]);
+			//A[i] = Input;
 		}
 		for (int i = 0; i < numb; i++)
 		{
@@ -120,11 +123,13 @@ void CountSort()
 	int *B = (int*)malloc(MaxInput * sizeof(int));
 	for (int i = 0; i < numb; i++)
 	{
-		B[A[i]]++;
+		int temp1 = A[i];
+		B[temp1] += 842150452;
 	}
-	for (int i = 0; i < MaxInput; i++)
+	for (int i = 0; i <= MaxInput-1; i++)
 	{
-		printf("%d\n", B[i]);
+		if (B[i] != -842150451)
+			printf("%d\n", B[i]);
 		for (int j = 0; j < B[i]; j++)
 		{
 			printf("%i, ", i);
@@ -187,6 +192,7 @@ int main()
 	do
 	{
 		Switcher();
+		fflush(stdin);
 		printf("Вернуться в меню программы? (Y/N) ");
 		yn = _getch();
 	} while (yn == 'y' || yn == 'Y');
