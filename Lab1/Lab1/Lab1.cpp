@@ -66,18 +66,43 @@ int ShakerSort()
 	free(A);
 }
 
-void CountSort()
+int merge_sort(int *a, int l, int r)
 {
-	int numb, err = 0, MaxInput;
+	if (l == r) return 0;
+	int mid = (l + r) / 2;
+	merge_sort(a, l, mid);
+	merge_sort(a, mid + 1, r);
+	int * tmp;
+	int i = l;
+	int j;
+	j = mid + 1;
+	tmp = (int*)malloc(r * sizeof(int));
+	for (int step = 0; step < r - l + 1; step++) {
+		if ((j > r) || ((i <= mid) && (a[i] < a[j]))) {
+			tmp[step] = a[i];
+			i++;
+		}
+		else {
+			tmp[step] = a[j];
+			j++;
+		}
+	}
+	for (int step = 0; step < r - l + 1; step++)
+		a[l + step] = tmp[step];
+	return 0;
+}
+
+void MergeSort()
+{
 	system("cls");
-	srand(time(0));
 	char yn;
+	int i, numb, err = 0;
 	do
 	{
-		printf("Введите количество элементов в массиве: ");
+		printf("Введите количество элементов в массиве (1-10): ");
 		scanf("%d", &numb);
 		getchar();
-		if (numb > 10 || numb < 0)
+		if (numb > 10 || numb < 1)
 		{
 			err = 1;
 			printf("Введенное число превышает допустимый лимит, повторите ввод.\n");
@@ -87,33 +112,105 @@ void CountSort()
 			err = 0;
 		}
 	} while (err == 1);
-	//clock_t begin = clock();
+	int *a = (int*)malloc(numb * sizeof(int));
+	do
+	{
+		printf("Заполнить массив случайными числами? (Y/N)\n");
+		yn = _getch();
+		if (yn == 'y' || yn == 'Y')
+		{
+			for (int i = 0; i < numb; i++)
+			{
+				a[i] = rand() % (500 + 1 - 0) + 0;
+				printf("%i элемент: %i\n", i + 1, a[i]);
+			}
+			err = 0;
+		}
+		else if (yn == 'n' || yn == 'N')
+		{
+			for (int i = 0; i < numb; i++)
+			{
+				printf("Введите %i элемент: ", i + 1);
+				int Input;
+				scanf("%i", &a[i]);
+			}
+			for (int i = 0; i < numb; i++)
+			{
+				printf("%i элемент: %i\n", i + 1, a[i]);
+			}
+			err = 0;
+		}
+		else
+		{
+			printf("Недопустимый ввод\n");
+			err = 1;
+		}
+	} while (err == 1);
+	printf("Начата сортировка массива...\n");
+	merge_sort(a, 0, numb - 1);
+	printf("\nРезультующий массив: ");
+	for (i = 0; i<numb; i++)
+		printf(" %d ", a[i]);
+	printf("\n");
+}
+
+void CountSort()
+{
+	int numb, err = 0, MaxInput;
+	system("cls");
+	srand(time(0));
+	char yn;
+	do
+	{
+		printf("Введите количество элементов в массиве (1-10): ");
+		scanf("%d", &numb);
+		getchar();
+		if (numb > 10 || numb < 1)
+		{
+			err = 1;
+			printf("Введенное число превышает допустимый лимит, повторите ввод.\n");
+		}
+		else
+		{
+			err = 0;
+		}
+	} while (err == 1);
 	int *A = (int*)malloc(numb * sizeof(int));
-	printf("Заполнить массив случайными числами? (Y/N)\n");
-	yn = _getch();
-	if (yn == 'y' || yn == 'Y')
+	do
 	{
-		for (int i = 0; i < numb; i++)
+		printf("Заполнить массив случайными числами? (Y/N)\n");
+		yn = _getch();
+		if (yn == 'y' || yn == 'Y')
 		{
-			A[i] = rand() % (500 + 1 - 0) + 0;
-			printf("%i элемент: %i\n", i+1, A[i]);
+			for (int i = 0; i < numb; i++)
+			{
+				A[i] = rand() % (500 + 1 - 0) + 0;
+				printf("%i элемент: %i\n", i + 1, A[i]);
+			}
+			err = 0;
 		}
-	}
-	else if (yn == 'n' || yn == 'N')
-	{
-		for (int i = 0; i < numb; i++)
+		else if (yn == 'n' || yn == 'N')
 		{
-			printf("Введите %i элемент: ", i+1);
-			int Input;
-			scanf("%i", &A[i]);
-			printf("%i\n", A[i]);
-			//A[i] = Input;
+			for (int i = 0; i < numb; i++)
+			{
+				printf("Введите %i элемент: ", i + 1);
+				int Input;
+				scanf("%i", &A[i]);
+			}
+			for (int i = 0; i < numb; i++)
+			{
+				printf("%i элемент: %i\n", i + 1, A[i]);
+			}
+			err = 0;
 		}
-		for (int i = 0; i < numb; i++)
+		else
 		{
-			printf("%i элемент: %i\n", i + 1, A[i]);
+			printf("Недопустимый ввод\n");
+			err = 1;
 		}
-	}
+	} while (err == 1);
+	printf("Начата сортировка массива...\n");
+	clock_t begin = clock();
 	MaxInput = A[0];
 	for (int i = 0; i < numb; i++)
 	{
@@ -121,24 +218,23 @@ void CountSort()
 			MaxInput = A[i];
 	}
 	int *B = (int*)malloc(MaxInput * sizeof(int));
+	for (int i = 0; i <= MaxInput; i++)
+	{
+		B[i] = 0;
+	}
 	for (int i = 0; i < numb; i++)
 	{
 		int temp1 = A[i];
-		B[temp1] += 842150452;
+		B[temp1] += 1;
 	}
-	for (int i = 0; i <= MaxInput-1; i++)
+	for (int i = 0; i <= MaxInput; i++)
 	{
-		if (B[i] != -842150451)
-			printf("%d\n", B[i]);
-		for (int j = 0; j < B[i]; j++)
-		{
+		if (B[i] != 0)
 			printf("%i, ", i);
-		}
 	}
-	//clock_t end = clock();
-	//double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-	//printf("\nПотраченное время: %f секунд\n", time_spent);
-	free(A);
+	clock_t end = clock();
+	double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+	printf("\nПотраченное время: %f секунд\n", time_spent);
 }
 
 void Switcher()
@@ -155,8 +251,7 @@ void Switcher()
 		else
 			system("cls");
 		system("cls");
-		printf("Загрузка завершена.\n");
-		printf("Выберите сортировку:\n1.Шейкерная сортировка\n-2.Сорировка слиянием    // в разработке\n3.Сортировка подсчетом\nВведите номер выбранной сортировки: ");
+		printf("Выберите сортировку:\n1.Шейкерная сортировка\n2.Сорировка слиянием\n3.Сортировка подсчетом\nВведите номер выбранной сортировки: ");
 		func = _getch();
 		switch (func)
 		{
@@ -167,7 +262,8 @@ void Switcher()
 		}
 		case 50:
 		{
-			printf("Функция в разработке...");
+			MergeSort();
+			//printf("Функция в разработке...");
 			break;
 		}
 		case 51:
