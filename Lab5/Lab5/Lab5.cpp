@@ -41,7 +41,8 @@ int main()
 					}
 					printf("Желаете ли Вы повторить выполнение данной функции еще раз? (Y/N)");
 					scanf("%c", &yn);
-					fflush(stdin);
+					getchar();
+					//fflush(stdin);
 				} while (yn == 'y' && yn != 'n');
 				break;
 			}
@@ -64,7 +65,7 @@ int main()
 						}
 						else
 							err = 0;
-					} while (err = 1);
+					} while (err == 1);
 					do
 					{
 						printf("Задайте количество столбцов для двумерного массива: ");
@@ -77,7 +78,7 @@ int main()
 						}
 						else
 							err = 0;
-					} while (err = 1);
+					} while (err == 1);
 					do
 					{
 						printf("Введите минимальное число генерируемых случайных чисел: ");
@@ -90,7 +91,7 @@ int main()
 						}
 						else
 							err = 0;
-					} while (err = 1);
+					} while (err == 1);
 					do
 					{
 						printf("Введите максимальное число генерируемых случайных чисел: ");
@@ -103,7 +104,7 @@ int main()
 						}
 						else
 							err = 0;
-					} while (err = 1);
+					} while (err == 1);
 					printf("Вот массив:\n");
 					for (j1 = 0; j1 < rows; j1++)
 					{
