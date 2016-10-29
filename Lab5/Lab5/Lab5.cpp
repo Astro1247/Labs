@@ -25,11 +25,11 @@ int main()
 					int *arr;
 					system("cls");
 					printf("Пожалуйста, предоствавьте значение x=");
+					fflush(stdin);
 					scanf("%i", &x);
-					fflush(stdin);
 					printf("Сколько элементов вывести Вам вывести на экран?");
-					scanf("%i", &numb);
 					fflush(stdin);
+					scanf("%i", &numb);
 					arr = (int*)malloc(numb * sizeof(int));
 					for (int i = 1; i <= numb; i++)
 					{
@@ -40,10 +40,12 @@ int main()
 						printf("%i елемент: %.6f\n", a, fx);
 					}
 					printf("Желаете ли Вы повторить выполнение данной функции еще раз? (Y/N)");
-					scanf("%c", &yn);
-					getchar();
-					//fflush(stdin);
+					fflush(stdin);
+					//scanf("%c", &yn);
+					//getchar();
+					yn = _getch();
 				} while (yn == 'y' && yn != 'n');
+				system("cls");
 				break;
 			}
 			case 50:
