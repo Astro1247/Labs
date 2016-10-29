@@ -4,14 +4,19 @@
 #include "stdafx.h"
 #include "locale.h"
 #include "conio.h"
+#include<Windows.h>
 
 int main() {
-	int i, j, menuPoint=0;
-	char str_1[100], str_2[100], str_3[100],s;  //исходная строка 
+	int i, j, a, menuPoint = 0;
+	char str_1[100], str_2[100], str_3[100], s;  //исходная строка 
 	char symbol, yn; //удаляемый символ
 	setlocale(LC_ALL, "RUS");
+
+	SetConsoleCP(1251);// установка кодовой страницы win-cp 1251 в поток ввода
+	SetConsoleOutputCP(1251); // установка кодовой страницы win-cp 1251 в поток вывода
+
 	printf("Выберите алгоритм:\n1. Удаление требуемого символа из введенной строки\n2. Сравнение двух строк\nВаш выбор: ");
-	menuPoint=_getch();//scanf("%d", &menuPoint);
+	menuPoint = _getch();//scanf("%d", &menuPoint);
 	//getchar();
 	do
 	{
@@ -22,16 +27,20 @@ int main() {
 			system("cls");
 			do {
 				printf("Введите строку: ");
-				fgets(str_1, 100, stdin);	// Ввод строки
+				//fgets(str_1, 100, stdin);	// Ввод строки
+				gets(str_1);
+				a = strlen(str_1);
+				if (a > 100) {
+					printf("\nbig str\n");
 					//getchar();
-				if (sizeof(str_1) / sizeof(char*) > 100)
-				{
-					printf("\nToo big dick\n");
 					break;
 				}
+
+				printf("stroka= %s", str_1);
 				printf("Введите символ который требуется удалить: ");
+				fflush(stdin);
 				scanf("%c", &symbol);
-				printf("\nsymbol= %d",symbol);
+				//printf("\nsymbol= %с",symbol);
 				getchar();
 				// Удаление из строки s всех вхождений символа (c)
 				i = 0;          // Индекс для исходной строки
@@ -47,10 +56,10 @@ int main() {
 				}
 				str_1[j] = '\0';              //Запись нулевого байта в конец модифицированной строки
 				printf("Строка: %s\n", str_1);//Вывод результата
-				printf("Повторить выполнение функции? (Y/N)");
+				printf("Повторить выполнение функции? (Если да введите 1)");
 				scanf("%c", &yn);
 				getchar();
-			} while (yn == 'y' || yn == 'Y');
+			} while (yn == '1');
 			break;
 		}
 		case 50:
@@ -81,5 +90,6 @@ int main() {
 		}
 	} while (menuPoint == 0);
 	system("pause");
+
 	return 0;
 }
