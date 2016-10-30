@@ -7,7 +7,7 @@
 #include<Windows.h>
 
 int main() {
-	int i, j, a, menuPoint = 0;
+	int i, j, a, i1, menuPoint = 0;
 	char str_1[100], str_2[100], str_3[100], s;  //исходная строка 
 	char symbol, yn; //удаляемый символ
 	setlocale(LC_ALL, "RUS");
@@ -26,27 +26,36 @@ int main() {
 		{
 			system("cls");
 			do {
-				printf("Введите строку: ");
-				//fgets(str_1, 100, stdin);	// Ввод строки
-				gets(str_1);
+				i1 = 1;
+				/*gets(str_1);
 				a = strlen(str_1);
 				if (a > 100) {
-					printf("\nbig str\n");
-					//getchar();
-					break;
+				printf("\nbig str\n");
+				break;
 				}
+				fgets(str_1,100,stdin);
+				fflush(stdin);*/
+				do {
+					printf("Введите строку: ");
 
-				printf("stroka= %s", str_1);
-				printf("Введите символ который требуется удалить: ");
+					fflush(stdin);
+					scanf("%s", &str_1);
+					if (strlen(str_1) > 100)	printf("\n Veri bog str\n");
+					else i1 = 0;
+				} while (i1 != 0);
+				printf("\nВведите символ который требуется удалить: ");
 				fflush(stdin);
-				scanf("%c", &symbol);
-				//printf("\nsymbol= %с",symbol);
+				//free(symbol);
+				//symbol = 'a';
+				//scanf("%c", &symbol);
+				symbol = _getch();
+				printf("\nsymbol= %с\n",symbol);
 				getchar();
 				// Удаление из строки s всех вхождений символа (c)
 				i = 0;          // Индекс для исходной строки
 				j = i;          // Индекс для модифицированной строки
 								// Цикл модификации исходной строки
-				printf("\nstr_1= %s", str_1);
+				//printf("\nstr_1= %s", str_1);
 				while (str_1[i])// Пока в строке не нулевой байт
 				{
 					// Проверить текущий символ строки
@@ -59,6 +68,7 @@ int main() {
 				printf("Повторить выполнение функции? (Если да введите 1)");
 				scanf("%c", &yn);
 				getchar();
+				system("cls");
 			} while (yn == '1');
 			break;
 		}
@@ -68,10 +78,28 @@ int main() {
 			do
 			{
 				printf("Введите строки для сравнения:\n");
-				printf("\n1: ");
-				gets(str_2);										  //Получение строки 1
-				printf("\n2: ");
-				gets(str_3);										  //Получение строки 2
+				do {
+					printf("\nВведите строку1: ");
+					fflush(stdin);
+					scanf("%s", &str_2);
+					if (strlen(str_2) > 100) {
+						system("cls");
+						printf("\n\tСтрока слишком большая повторите ввод ");
+					}
+					else i1 = 0;
+				} while (i1);										  //Получение строки 1
+				i1 = 1;
+				do {
+					printf("Введите строку2: ");
+					fflush(stdin);
+					scanf("%s", &str_3);
+					if (strlen(str_3) > 100) {
+						system("cls");
+						printf("\n\tСтрока 2 слишком большая повторите ввод \n");
+					}
+					else i1 = 0;
+				} while (i1);				//Получение строки 2
+				printf("\nСтрока 1:%s\nСтрока 2:%s\n", str_2,str_3);
 				if (strcmp(str_2, str_3))							  //Сравнение строк
 					printf("Строки разные");
 				else
