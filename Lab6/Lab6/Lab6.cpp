@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "locale.h"
 #include "conio.h"
-#include<Windows.h>
+#include <Windows.h>
 
 int main() {
 	int i, j;		//Счетчики
@@ -15,7 +15,6 @@ int main() {
 
 	SetConsoleCP(1251);// установка кодовой страницы win-cp 1251 в поток ввода
 	SetConsoleOutputCP(1251); // установка кодовой страницы win-cp 1251 в поток вывода
-	A:	//Флажок возврата в главное меню
 	printf("Выберите алгоритм:\n1. Удаление требуемого символа из введенной строки\n2. Сравнение двух строк\n3. Выход из программы\nВаш выбор: ");
 	menuPoint = _getch();
 	do
@@ -58,7 +57,6 @@ int main() {
 				yn = _getch();
 				system("cls");	//Очищение єкрана
 			} while (yn == 49);
-			goto A;	//Возврат в главное меню
 			break;
 		}
 		case 50:
@@ -97,7 +95,6 @@ int main() {
 				yn = _getch();
 				system("cls");
 			} while (yn == 49);
-			goto A;
 			break;
 		}
 		case 51: {
@@ -107,7 +104,6 @@ int main() {
 		{
 			printf("\nНеверный ввод повторите попытку\n"); //Неверный выбор
 			system("cls");
-			goto A;	//Возврат в главное меню
 			break;
 		}
 		}
