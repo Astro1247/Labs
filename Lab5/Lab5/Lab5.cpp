@@ -6,8 +6,9 @@
 int main()
 {
 	int a, t, j1, j2, min, mint, inpt, numb, columns, rows, maxrand, minrand, err = 0;
-	double fx, x = 1.1, arr2d[50][50];
+	double fx, arr2d[50][50];
 	char yn;
+	float x;
 	setlocale(LC_ALL, "RUS");
 	do
 	{
@@ -24,12 +25,24 @@ int main()
 				{
 					int *arr;
 					system("cls");
-					printf("Пожалуйста, предоствавьте значение x=");
-					fflush(stdin);
-					scanf("%i", &x);
-					printf("Сколько элементов вывести Вам вывести на экран?");
-					fflush(stdin);
-					scanf("%i", &numb);
+					do
+					{
+						err = 0;
+						printf("Пожалуйста, предоствавьте значение x=");
+						fflush(stdin);
+						scanf("%f", &x);
+						if (x < -1000 || x > 1000)
+							err = 1;
+					} while (err == 1);
+					do
+					{
+						err = 0;
+						printf("Сколько элементов вывести Вам вывести на экран?");
+						fflush(stdin);
+						scanf("%i", &numb);
+						if (numb < 1 || numb > 50)
+							err = 1;
+					} while (err == 1);
 					arr = (int*)malloc(numb * sizeof(int));
 					for (int i = 1; i <= numb; i++)
 					{
@@ -41,8 +54,6 @@ int main()
 					}
 					printf("Желаете ли Вы повторить выполнение данной функции еще раз? (Y/N)");
 					fflush(stdin);
-					//scanf("%c", &yn);
-					//getchar();
 					yn = _getch();
 				} while (yn == 'y' && yn != 'n');
 				system("cls");
