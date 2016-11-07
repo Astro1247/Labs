@@ -13,11 +13,9 @@ void func1()
 	int err, x = 0;
 	do
 	{
-		system("cls");
 		err = 0;
 		printf("Введите размер массива: ");
 		clean_stdin();
-		//scanf("%i", &size);
 		fseek(stdin, 0, SEEK_END);
 		if (scanf("%i[0-9]", &size) == 1) {}
 		else
@@ -25,12 +23,11 @@ void func1()
 			printf("Буквы.\n");
 			err = 1;
 		}
-		if (size > 50 || size < 1 && err != 1)
+		if (size > 50 || size < 1 && err == 0)
 		{
 			printf("Превышен лимит\n");
 			err = 1;
 		}
-		printf("%i\n", size);
 	} while (err == 1);
 	int *A = (int*)malloc(size * sizeof(int));
 	int *B = (int*)malloc(size * sizeof(int));
@@ -42,8 +39,6 @@ void func1()
 			printf("Введите %i элемент массива A: ", i + 1);
 			clean_stdin();
 			err = 0;
-			//scanf("%i", &A[i]);
-			clean_stdin();
 			fseek(stdin, 0, SEEK_END);
 			if (scanf("%i[0-9]", &A[i]) == 1) {}
 			else
@@ -140,6 +135,7 @@ int main()
 		clean_stdin();
 		scanf("%c", &yn);
 		getchar();
+		system("cls");
 	} while (yn == 'y' && yn != 'n');
     return 0;
 }
