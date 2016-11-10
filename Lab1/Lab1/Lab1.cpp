@@ -67,24 +67,44 @@ int merge_sort(int *a, int l, int r)
 	if (l == r) return 0;
 	int mid = (l + r) / 2;
 	merge_sort(a, l, mid);
+	printf("\nПромежуточный вывод[1]: ");
+	for (int u = 0; u < mid; u++)
+	{
+		printf(" %d ", a[u]);
+	}
 	merge_sort(a, mid + 1, r);
+	printf("\nПромежуточный вывод[2]: ");
+	for (int u = 0; u < mid; u++)
+	{
+		printf(" %d ", a[u]);
+	}
 	int * tmp;
 	int i = l;
 	int j;
 	j = mid + 1;
 	tmp = (int*)malloc(r * sizeof(int));
+	printf("\nПромежуточный вывод[3]: ");
 	for (int step = 0; step < r - l + 1; step++) {
 		if ((j > r) || ((i <= mid) && (a[i] < a[j]))) {
 			tmp[step] = a[i];
 			i++;
+			printf(" %d ", tmp[step]);  // Вывод 3 или тут или нижу
 		}
 		else {
 			tmp[step] = a[j];
 			j++;
+			printf(" %d ", tmp[step]); // или тут (3)
 		}
+		//printf(" %d ", a[i]);
 	}
 	for (int step = 0; step < r - l + 1; step++)
 		a[l + step] = tmp[step];
+	printf("\nПромежуточный вывод[4]: ");
+	for (int u = 0; u < r; u++)
+	{
+		printf(" %d ", a[u]); // тут вывод 4
+	}
+	printf("\n");
 	return 0;
 }
 
