@@ -44,15 +44,11 @@ int ShakerSort()
 	scanf("%d", &n);
 	getchar();
 	clock_t begin = clock();
-	//int *A = new int[n];
 	int *A = (int*)malloc(n * sizeof(int));
 	
 	for (k = 0; k<n; k++)
 	{
 		temp1 = k + 1;
-		/*printf("%i элемент: ", temp1);
-		scanf("%d", &A[k]);
-		getchar();*/
 		A[k] = rand() % (500 + 1 - 0) + 0;
 		printf("%i элемент: %i\n", temp1, A[k]);
 	}
@@ -242,7 +238,6 @@ void CountSort()
 			A_sorted[j] = i;
 			j++;
 		}
-			//printf("%i, ", i);
 	}
 	printf("Результующий массив: ");
 	for (int i = 0; i < numb; i++)
@@ -275,7 +270,6 @@ void Switcher()
 		case 50:
 		{
 			MergeSort();
-			//printf("Функция в разработке...");
 			break;
 		}
 		case 51:
