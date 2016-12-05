@@ -1,5 +1,4 @@
-// ConsoleApplication12.cpp: определяет точку входа для консольного приложения.
-//
+// v 0.3
 
 #include "stdafx.h"
 #include <stdio.h>
@@ -7,10 +6,26 @@
 #include "locale.h"
 #include <stdlib.h>
 
-float ff(float);
-int find_max(int *A, int sizeA, int, int);
 
-int main()
+float ff(float n) {
+	return 3.14 * n * n;
+}
+
+void clean_stdin(); // Функция очистки буфера ввода с клавиатуры
+
+
+int i = 0, max;
+
+int maximum(int ar[], int n)
+{
+	int max;
+	if (!n)
+		return ar[n];
+	max = maximum(ar, n - 1);
+	return ar[n]>max ? ar[n] : max;
+}
+
+int func()
 {
 	float r = 0, s;
 	int err, yn = 0, sizeA, *A, i = 0, max = 0, n = 1;
@@ -69,7 +84,7 @@ int main()
 			getchar();
 			return 1;
 		}
-		for (i = 0;i < sizeA; i++) {
+		for (i = 0; i < sizeA; i++) {
 			do
 			{
 				err = 0; // Очистка переменной отвечающей за наличие ошибок (если ошибки будут, программа задаст значание позже)
@@ -88,67 +103,26 @@ int main()
 				}
 			} while (err == 1); // Повторять пока есть ошибка
 		}
-		printf("Даный массив:\n");
-		for (i = 0;i < sizeA; i++) {
+		printf("Даный массив: \n");
+		for (i = 0; i < sizeA; i++) {
 			printf("%i ", A[i]);
 		}
-		max = find_max(A, sizeA, 0, 0);
-		printf("max= %i", max);
+		max = A[0];
+		max = maximum(A, sizeA);
+		printf("\nМаксимальный элемент в массиве = %i", max);
 		system("pause");
 	} while (yn == 2);
 	//	} while (yn);
 	return 0;
 }
 
-float ff(float n) {
-	return 3.14 * n * n;
+int main()
+{
+	func();
+	return 0;
 }
-
-clean_stdin(void) // Функция очистки буфера ввода с клавиатуры
+void clean_stdin()
 {
 	fflush(stdin);
 	fseek(stdin, 0, SEEK_END);
 }
-
-int find_max(int *A[], int sizeA, int i, int max)
-{
-	/*int b = A[i];
-	printf("mas %i",i);
-	getchar();
-	system("pause");*/
-	/*if (i < sizeA) {
-		if (A[i] > max) {
-			max = A[i];
-		}
-		else return 0;
-			i++;
-		find_max(A, sizeA, i+=1, max);
-	}*/
-	if (i < sizeA-1)
-	{
-		int maxx = &A[1];
-		if (*maxx < A[i])
-			maxx = A[i];
-		i++;
-		find_max(*A, sizeA, i, max);
-	}
-	return max;
-}
-
-
-/*int search(int *array, int array_size)
-{
-static int maxVal = 0;
-static int currIndex = 0;
-static int memIndex = 0;
-
-if (array_size) {
-if (*array > maxVal) {
-maxVal = *array;
-memIndex = currIndex;
-}
-currIndex++;
-return search(++array, --array_size);
-}
-return memIndex;
-}*/
