@@ -7,18 +7,35 @@
 #include <stdlib.h>
 #include "windows.h"
 #include "locale.h"
+#include <stdbool.h>
 #define STACK_MAX_SIZE 100
 #define STACK_OVERFLOW  -100
 #define STACK_UNDERFLOW -101
 
+void mainMenu(int menuPoint);
+void clean();
 
 int main()
 {
 	setlocale(LC_ALL, "RUS");
-	error();
-	func1();
+	clean();
+	mainMenu(0);
+	//queue();
+	//func1();
 	system("pause");
     return 0;
+}
+
+int clean_stdin() // Функция очистки буфера ввода с клавиатуры
+{
+	fflush(stdin);
+	fseek(stdin, 0, SEEK_END);
+	return 0;
+}
+
+void clean()
+{
+	system("cls");
 }
 
 typedef int T;

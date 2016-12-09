@@ -152,6 +152,8 @@
   <ItemGroup>
     <ClCompile Include="ASD_Lab2.cpp" />
     <ClCompile Include="error.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="Queue.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
