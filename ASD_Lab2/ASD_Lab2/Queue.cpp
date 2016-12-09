@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define MAX 6
+#define MAX 100
 
 int intArray[MAX];
 int front = 0;
@@ -61,7 +61,7 @@ void queue()
 	{
 		clean();
 		int pressedkey = "";
-		printf("Максимальное количество элементов в очереди: 6\nМеню управления очередью:\n=> 1. Добавить элемент\n   2. Удалить элемент\n   3. Считать первый элемент\n   4. Проверить очередь на пустоту\n   5. Получить размер очереди\n");
+		printf("Меню управления очередью:\n=> 1. Добавить элемент\n   2. Удалить элемент\n   3. Считать первый элемент\n   4. Проверить очередь на пустоту\n   5. Получить размер очереди\n");
 		//while (pressedkey != '\r')
 		{
 			int pressedkey;
@@ -96,7 +96,7 @@ void queue()
 						{
 							currentSelect = menuPoint;
 							system("cls");
-							printf("Максимальное количество элементов в очереди: 6\nМеню управления очередью:\n");
+							printf("Меню управления очередью:\n");
 							switch (currentSelect)
 							{
 							case 1:
@@ -163,7 +163,7 @@ void queue()
 		}
 		if (isEmpty())
 		{
-			error();
+			//error();
 			printf("Очередь уже пустая!");
 			getch();
 			break;
@@ -182,6 +182,24 @@ void queue()
 		getch();
 		break;
 	}
+	case 4:
+		{
+		clean();
+		if (isEmpty())
+			printf("Очередь пустая!");
+		else
+			printf("Очередь не пустая!");
+		getch();
+		break;
+		}
+	case 5:
+		{
+		clean();
+		int queueSize = size();
+		printf("Размер очереди: %i", queueSize);
+		getch();
+		break;
+		}
 	default:
 	{
 
