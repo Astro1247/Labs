@@ -70,7 +70,7 @@ void mainMenu()
 	case 1:
 	{
 		clean();
-		printf("Типо вызвал стек");
+		stack_main();
 		break;
 	}
 	case 2:

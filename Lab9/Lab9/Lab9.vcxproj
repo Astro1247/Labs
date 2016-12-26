@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{6BA085CF-7733-4415-944A-A0414A842096}</ProjectGuid>
+    <ProjectGuid>{4249819A-7B04-4C0E-81C8-C8CF64F5B8ED}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ASD_Lab2</RootNamespace>
+    <RootNamespace>Lab9</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -150,11 +150,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ASD_Lab2.cpp" />
-    <ClCompile Include="error.cpp" />
-    <ClCompile Include="menu.cpp" />
-    <ClCompile Include="Queue.cpp" />
-    <ClCompile Include="Stack.cpp" />
+    <ClCompile Include="Lab9.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
